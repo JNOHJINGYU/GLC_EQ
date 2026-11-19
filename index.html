@@ -16,10 +16,10 @@
 <meta property="og:title" content="The all-new GLC Electric | 전기차의 기준을 다시 세우다">
 <meta property="og:description" content="최대 616km 주행거리, 330kW 초급속 충전, 800V 아키텍처. GLC Electric의 국내 출시 라인업·가격·옵션·제원을 한눈에 확인하세요.">
 <meta property="og:url" content="https://jnohjingyu.github.io/GLC_EQ/">
-<meta property="og:image" content="https://raw.githubusercontent.com/JNOHJINGYU/images/main/26C0039_016.jpg">
-<meta property="og:image:secure_url" content="https://raw.githubusercontent.com/JNOHJINGYU/images/main/26C0039_016.jpg">
+<meta property="og:image" content="https://jnohjingyu.github.io/GLC_EQ/og-glc-electric.jpg">
+<meta property="og:image:secure_url" content="https://jnohjingyu.github.io/GLC_EQ/og-glc-electric.jpg">
 <meta property="og:image:type" content="image/jpeg">
-<!-- 아래 width/height는 실제 이미지 파일 크기로 반드시 확인 후 교체 (1200x630 전용 이미지가 아니라면 부정확할 수 있음) -->
+<!-- 카카오톡/SNS 미리보기 전용 이미지 (1200x630, 약 160KB) — og-glc-electric.jpg를 이 HTML과 같은 저장소(GLC_EQ)에 함께 업로드 -->
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The all-new Mercedes-Benz GLC Electric">
@@ -27,7 +27,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The all-new GLC Electric | 전기차의 기준을 다시 세우다">
 <meta name="twitter:description" content="최대 616km 주행거리, 330kW 초급속 충전, 800V 아키텍처. 국내 출시 라인업과 주요 사양을 확인하세요.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/JNOHJINGYU/images/main/26C0039_016.jpg">
+<meta name="twitter:image" content="https://jnohjingyu.github.io/GLC_EQ/og-glc-electric.jpg">
 
 <script type="application/ld+json">
 {
@@ -440,14 +440,14 @@ table.option-compare-table thead th.opt-col-focus, table.option-compare-table tb
 
 .spec-table-wrap{
   margin-top:28px;background:#fff;border-radius:20px;border:1px solid var(--line);
-  box-shadow:0 4px 18px rgba(17,17,17,0.04);overflow:hidden;
+  box-shadow:0 4px 18px rgba(17,17,17,0.04);overflow:hidden;overflow:clip;
 }
 table.spec-table{width:100%;border-collapse:collapse;table-layout:fixed;}
 table.spec-table col.col-item{width:27%;}
 table.spec-table col.col-300, table.spec-table col.col-400{width:36.5%;}
 table.spec-table thead th{
   background:var(--electric-blue-soft);color:var(--ink);font-size:14.5px;font-weight:800;
-  text-align:left;padding:18px 22px;position:sticky;top:64px;z-index:5;
+  text-align:left;padding:18px 22px;position:sticky;top:var(--nav-total);z-index:5;
 }
 table.spec-table thead th.spec-th-400{color:var(--electric-blue-deep);}
 table.spec-table tbody tr.spec-category td{
@@ -540,6 +540,67 @@ input[type=range]{width:100%;accent-color:var(--electric-blue);height:6px;}
   .color-swatches{order:2;margin-bottom:24px;}
   .color-label{order:3;margin-bottom:0;}
 }
+
+
+/* ===== 상단 고정 내비게이션 (site-nav) ===== */
+:root{--nav-h:64px;--nav-total:calc(var(--nav-h) + env(safe-area-inset-top, 0px));}
+@media(max-width:760px){:root{--nav-h:54px;}}
+html{scroll-padding-top:calc(var(--nav-total) + 14px);}
+body{padding-top:var(--nav-total);}
+.site-nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding-top:env(safe-area-inset-top, 0px);
+  background:rgba(255,255,255,0.82);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid rgba(17,17,17,0.07);
+  box-shadow:0 1px 12px rgba(17,17,17,0.03);
+  transition:background-color .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.site-nav.is-scrolled{background:rgba(255,255,255,0.97);border-bottom-color:var(--line);box-shadow:0 4px 22px rgba(17,17,17,0.07);}
+.site-nav-inner{
+  height:calc(var(--nav-h) - 1px);width:min(100% - 48px,1440px);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:28px;
+}
+.site-nav-brand{
+  flex:0 0 auto;text-decoration:none;color:var(--ink);font-weight:900;font-synthesis:weight;
+  font-size:17px;letter-spacing:-0.03em;white-space:nowrap;line-height:1;
+}
+.site-nav-brand span{color:var(--electric-blue);}
+.site-nav-menu{
+  display:flex;align-items:center;gap:4px;min-width:0;
+  overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.site-nav-menu::-webkit-scrollbar{display:none;}
+.site-nav-menu a{
+  position:relative;flex:0 0 auto;display:inline-flex;align-items:center;height:40px;padding:0 13px;
+  color:var(--ink-soft);text-decoration:none;font-size:14.5px;font-weight:600;letter-spacing:-0.02em;
+  white-space:nowrap;border-radius:8px;transition:color .2s ease, background-color .2s ease;
+}
+.site-nav-menu a::after{
+  content:'';position:absolute;left:13px;right:13px;bottom:4px;height:2px;border-radius:2px;
+  background:var(--electric-blue);transform:scaleX(0);transition:transform .25s ease;
+}
+.site-nav-menu a:hover{color:var(--ink);}
+.site-nav-menu a.is-active{color:var(--electric-blue);}
+.site-nav-menu a.is-active::after{transform:scaleX(1);}
+.site-nav a:focus-visible{outline:2px solid var(--electric-blue);outline-offset:2px;}
+@media(max-width:1100px){.site-nav-inner{gap:16px;}.site-nav-menu a{padding:0 10px;font-size:14px;}.site-nav-menu a::after{left:10px;right:10px;}}
+@media(max-width:760px){
+  .site-nav-inner{
+    width:100%;gap:0;
+    padding-left:max(18px, env(safe-area-inset-left, 0px));padding-right:0;
+  }
+  .site-nav-brand{font-size:15px;padding-right:14px;position:relative;}
+  .site-nav-brand::after{content:'';position:absolute;right:0;top:50%;height:16px;margin-top:-8px;width:1px;background:var(--line);}
+  .site-nav-menu{
+    flex:1 1 auto;gap:2px;padding:0 max(14px, env(safe-area-inset-right, 0px)) 0 6px;height:100%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 22px),transparent 100%);
+            mask-image:linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 22px),transparent 100%);
+  }
+  .site-nav-menu a{height:44px;padding:0 11px;font-size:14px;}
+  .site-nav-menu a::after{left:11px;right:11px;bottom:6px;}
+}
+@media(prefers-reduced-motion:reduce){.site-nav,.site-nav-menu a,.site-nav-menu a::after{transition:none;}}
 
 /* ===== image link placeholder hint (shown while a URL is empty or fails to load) ===== */
 .arch-image,.exterior-media,.split-image,.color-image,.trim-image{position:relative;}
@@ -679,13 +740,184 @@ const IMAGE_CACHE_VERSION = "20261013";
 ===================================================== */
 </script>
 
+<script>
+/* =====================================================
+   ★ 경량(WebP) 이미지 설정 — 2026.11.19 추가 ★
+
+   IMAGE_LINKS(위)의 원본 주소는 그대로 둡니다.
+   원본은 ① 이미지 확대(라이트박스) 고화질 ② 경량 이미지가 없을 때의
+   예비 주소로 계속 사용됩니다.
+
+   페이지에 표시되는 이미지는 이 HTML과 같은 저장소의
+   opt/ 폴더에 올린 WebP 파일을 사용합니다.
+   (예: opt/hero-1600.webp → 화면 크기에 맞는 크기를 브라우저가 자동 선택)
+
+   - opt 폴더를 아직 올리지 않았거나 파일이 없으면
+     자동으로 IMAGE_LINKS 원본 이미지로 전환되므로 페이지가 깨지지 않습니다.
+   - 경량 이미지를 끄려면 USE_OPTIMIZED_IMAGES 를 false 로 바꾸세요.
+   - IMAGE_LINKS 이미지를 다른 파일로 바꾸면(파일명이 from 과 다르면)
+     해당 항목은 자동으로 원본을 사용합니다.
+   - 같은 파일명으로 원본을 교체했다면 IMAGE_KEY_VERSIONS 에
+     그 키만 적어 주세요. 예: hero: "20261201"
+     → 그 이미지만 새로 받고(원본 사용), 나머지 이미지 캐시는 유지됩니다.
+===================================================== */
+const USE_OPTIMIZED_IMAGES = true;
+const OPTIMIZED_IMAGE_BASE = "opt/";
+const OPTIMIZED_IMAGE_VERSION = "20261119";
+const IMAGE_OPTIMIZED = {
+  hero: { from:"26C0039_016.jpg", w:[960,1600,2400] },
+  architecture: { from:"GLC_EQ_BA.jpg", w:[640,1280] },
+  digitalLight: { from:"GLC_EQ_GRIL.jpg", w:[640,1280] },
+  exterior: { from:"26C0038_008.jpg", w:[960,1600,2400] },
+  amgLine: { from:"GLC_EQ_AMGLINE.jpg", w:[822] },
+  amgLinePlus: { from:"GLC_EQ_AMGLINE+_WHITE.png", w:[800,1393] },
+  colorPolarWhite: { from:"GLC_EQ_white.png", w:[800,1335] },
+  colorObsidianBlack: { from:"GLC_EQ_black.png", w:[800,1336] },
+  colorLavenderSilver: { from:"GLC_EQ_silver.png", w:[800,1351] },
+  colorSheerBlue: { from:"GLC_EQ_CLEAR.png", w:[800,1348] },
+  colorSodaliteBlue: { from:"GLC_EQ_BLUE.png", w:[800,1357] },
+  colorHighTechSilver: { from:"GLC_EQ_HITECH.png", w:[800,1339] },
+  colorManufakturAlpineGrey: { from:"GLC_EQ_GREY.png", w:[800,1351] },
+  colorManufakturOpaliteWhite: { from:"GLC_EQ_OPAL.png", w:[800,1383] },
+  mbuxSuper: { from:"GLC_EQ_SUPER.png", w:[800,1660] },
+  mbuxHyper: { from:"GLC_EQ_HYPER.png", w:[800,1635] },
+  burmester: { from:"GLC_EQ_BURMESTER.jpeg", w:[600] },
+  panorama: { from:"GLC_EQ_SKY.jpg", w:[640,1280] },
+  ambient: { from:"GLC_EQ_AMBI.jpg", w:[640,1280] },
+  seats: { from:"GLC_EQ_SEAT.jpg", w:[640,1280] },
+  storage: { from:"GLC_EQ_RED.jpg", w:[640,1280] },
+  trimGLC300: { from:"GLC_EQ_BASE.png", w:[800,1264] },
+  trimAMGLine: { from:"GLC_EQ_AMGLINE_ALPAIN.png", w:[800,1261] },
+  trimAMGLinePlus: { from:"GLC_EQ_RVQ.png", w:[800,1225] },
+  trimGLC400: { from:"GLC400.png", w:[800,1285] }
+};
+/* 개별 이미지 캐시 버전 (교체한 이미지만 적기) */
+const IMAGE_KEY_VERSIONS = {
+};
+
+/* ---- 이미지 주소 계산 (아래는 수정하지 않아도 됩니다) ---- */
+const IMAGE_VERSION = (typeof IMAGE_CACHE_VERSION !== 'undefined' && IMAGE_CACHE_VERSION) ? String(IMAGE_CACHE_VERSION) : '';
+
+function safeDecode(seg){ try { return decodeURIComponent(seg); } catch(e){ return seg; } }
+
+// converts github.com/<user>/<repo>/blob|raw/<branch>/<path>(?raw=true) to a direct
+// raw.githubusercontent.com address; other URLs are returned unchanged
+function normalizeImageUrl(url){
+  let u = (url || '').trim();
+  if(!u) return '';
+  const m = u.match(/^https?:\/\/(?:www\.)?github\.com\/([^\/]+)\/([^\/]+)\/(?:blob|raw)\/([^?#]+)/i);
+  if(m){
+    const path = m[3].split('/').map(seg => encodeURIComponent(safeDecode(seg))).join('/');
+    u = `https://raw.githubusercontent.com/${m[1]}/${m[2]}/${path}`;
+  }
+  return u;
+}
+
+// appends ?v=<version> (and an optional retry token) without touching an existing v=
+function withCacheVersion(url, retryToken, version){
+  if(!url || /^(data|blob):/i.test(url)) return url;
+  const v = (version === undefined) ? IMAGE_VERSION : version;
+  try{
+    const o = new URL(url, location.href);
+    if(v && !o.searchParams.has('v')) o.searchParams.set('v', v);
+    if(retryToken) o.searchParams.set('r', retryToken);
+    return o.toString();
+  }catch(e){
+    return url;
+  }
+}
+
+// original IMAGE_LINKS address (+ per-key version if one is set)
+function resolveImageSrc(url, retryToken, key){
+  const v = (key && IMAGE_KEY_VERSIONS[key]) ? String(IMAGE_KEY_VERSIONS[key]) : undefined;
+  return withCacheVersion(normalizeImageUrl(url), retryToken, v);
+}
+
+function imageFileName(url){
+  const clean = normalizeImageUrl(url).split(/[?#]/)[0];
+  return safeDecode(clean.substring(clean.lastIndexOf('/') + 1));
+}
+
+// returns { original, src, srcset, optimized } for an IMAGE_LINKS key
+function getImageSources(key){
+  const original = ((key && IMAGE_LINKS[key]) || '').trim();
+  if(!original) return null;
+  const o = IMAGE_OPTIMIZED[key];
+  const canUseOptimized = USE_OPTIMIZED_IMAGES && o && o.w && o.w.length &&
+    !IMAGE_KEY_VERSIONS[key] && imageFileName(original) === o.from;
+  if(canUseOptimized){
+    const urls = o.w.map(w => withCacheVersion(`${OPTIMIZED_IMAGE_BASE}${key}-${w}.webp`, null, OPTIMIZED_IMAGE_VERSION));
+    const fallbackIdx = o.w.findIndex(w => w >= 1200);
+    return {
+      original,
+      src: urls[fallbackIdx === -1 ? urls.length - 1 : fallbackIdx],
+      srcset: urls.map((u, i) => `${u} ${o.w[i]}w`).join(', '),
+      optimized: true
+    };
+  }
+  return { original, src: resolveImageSrc(original, null, key), srcset: '', optimized: false };
+}
+
+// sets src/srcset on an <img> without any UI work (used by the hero before the
+// main script runs, and by setImageOrHint later — identical values = no re-download)
+function primeImage(img, sources){
+  if(!img || !sources) return;
+  img.dataset.originalUrl = sources.original;
+  img.dataset.opt = sources.optimized ? '1' : '0';
+  if(sources.srcset){
+    if(!img.getAttribute('sizes')) img.setAttribute('sizes', '100vw');
+    if(img.getAttribute('srcset') !== sources.srcset) img.setAttribute('srcset', sources.srcset);
+  } else if(img.hasAttribute('srcset')){
+    img.removeAttribute('srcset');
+  }
+  if(img.getAttribute('src') !== sources.src) img.setAttribute('src', sources.src);
+}
+
+/* ---- 히어로 이미지 우선 요청 (preload) ---- */
+(function preloadHeroImage(){
+  try{
+    const s = getImageSources('hero');
+    if(!s) return;
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.setAttribute('fetchpriority', 'high');
+    if(s.srcset){
+      // href is intentionally omitted: browsers without imagesrcset support then skip
+      // the preload instead of downloading a second, different-size copy
+      link.setAttribute('imagesrcset', s.srcset);
+      link.setAttribute('imagesizes', '100vw');
+    } else {
+      link.href = s.src;
+    }
+    document.head.appendChild(link);
+  }catch(e){}
+})();
+</script>
+
 </head>
 <body>
 
+<header class="site-nav" id="siteNav">
+  <div class="site-nav-inner">
+    <a class="site-nav-brand" href="#top" aria-label="GLC Electric 맨 위로">GLC <span>Electric</span></a>
+    <nav class="site-nav-menu" id="siteNavMenu" aria-label="섹션 바로가기">
+      <a href="#tech" data-nav="tech">핵심기술</a>
+      <a href="#charging" data-nav="charging">충전·유지비</a>
+      <a href="#design" data-nav="design">디자인</a>
+      <a href="#colors" data-nav="colors">컬러</a>
+      <a href="#mbux" data-nav="mbux">실내·MBUX</a>
+      <a href="#trims" data-nav="trims">라인업·옵션</a>
+      <a href="#specs" data-nav="specs">제원·안전</a>
+    </nav>
+  </div>
+</header>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-media">
-    <img class="hero-background zoomable-image" data-img="hero" alt="GLC Electric 외관" onerror="handleImageError(this)" fetchpriority="high" decoding="async">
+    <img class="hero-background zoomable-image" data-img="hero" alt="GLC Electric 외관" onerror="handleImageError(this)" fetchpriority="high" loading="eager" sizes="100vw">
+    <script>primeImage(document.currentScript.previousElementSibling, getImageSources('hero'));</script>
     <span class="image-hint">이미지 링크를 입력해주세요</span>
   </div>
 
@@ -736,7 +968,7 @@ const IMAGE_CACHE_VERSION = "20261013";
 </section>
 
 <!-- 핵심기술 -->
-<section class="section-alt">
+<section class="section-alt" id="tech">
   <div class="wrap">
     <span class="eyebrow reveal">Part 2 · Core Technology</span>
     <h2 class="section-title reveal">GLC Electric 핵심기술</h2>
@@ -758,7 +990,7 @@ const IMAGE_CACHE_VERSION = "20261013";
     <span class="eyebrow reveal">Part 3 · Architecture</span>
     <h2 class="section-title reveal">스케이트보드 플랫폼,<br>800V의 여유</h2>
     <div class="arch-layout">
-      <div class="arch-image reveal-scale" style="cursor:zoom-in;"><img class="zoomable-image" data-img="architecture" alt="800V Architecture" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+      <div class="arch-image reveal-scale" style="cursor:zoom-in;"><img class="zoomable-image" data-img="architecture" alt="800V Architecture" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 860px) calc(100vw - 48px), 720px"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
       <div class="arch-features reveal delay-2">
         <div class="arch-feature"><div class="mark">800V</div><div><h5>초고압 시스템</h5><p>전력 손실을 최소화하고 충전·주행 효율을 함께 끌어올립니다.</p></div></div>
         <div class="arch-feature"><div class="mark">330kW</div><div><h5>초급속 충전</h5><p>전용 800V 인프라에서 최대 성능을 발휘합니다.</p></div></div>
@@ -770,7 +1002,7 @@ const IMAGE_CACHE_VERSION = "20261013";
 </section>
 
 <!-- 충전 -->
-<section class="section-alt">
+<section class="section-alt" id="charging">
   <div class="wrap">
     <span class="eyebrow reveal">Charging Life</span>
     <h2 class="section-title reveal">일상 속 충전</h2>
@@ -804,10 +1036,10 @@ const IMAGE_CACHE_VERSION = "20261013";
 <div class="volt-divider"><svg viewBox="0 0 280 24"><path class="volt-line" d="M0 12 L100 12 L110 2 L120 22 L130 12 L280 12"/></svg></div>
 
 <!-- Digital Light -->
-<section>
+<section id="design">
   <div class="wrap">
     <div class="fullscreen-feature reveal-scale" style="cursor:zoom-in;">
-      <img class="zoomable-image" data-img="digitalLight" alt="Digital Light" onerror="handleImageError(this)">
+      <img class="zoomable-image" data-img="digitalLight" alt="Digital Light" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 1368px) calc(100vw - 48px), 1320px">
       <div class="fullscreen-copy">
         <span class="eyebrow">Illumination</span>
         <h2>빛으로 완성한<br>전기 시대의 얼굴</h2>
@@ -824,7 +1056,7 @@ const IMAGE_CACHE_VERSION = "20261013";
     <h2 class="section-title reveal">익스테리어 디자인</h2>
     <p class="section-desc reveal">공기 저항 0.26Cd의 매끄러운 실루엣과 일루미네이티드 그릴이 완성하는, 전기 시대 GLC의 얼굴입니다.</p>
     <div class="exterior-media reveal-scale">
-      <img class="zoomable-image" data-img="exterior" alt="GLC Electric Exterior" onerror="handleImageError(this)">
+      <img class="zoomable-image" data-img="exterior" alt="GLC Electric Exterior" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 1368px) calc(100vw - 48px), 1320px">
       <span class="image-hint">이미지 링크를 입력해주세요</span>
     </div>
     <p class="exterior-hint">이미지를 클릭하면 고화질로 확대됩니다</p>
@@ -848,12 +1080,12 @@ const IMAGE_CACHE_VERSION = "20261013";
 <div class="volt-divider"><svg viewBox="0 0 280 24"><path class="volt-line" d="M0 12 L100 12 L110 2 L120 22 L130 12 L280 12"/></svg></div>
 
 <!-- 컬러 -->
-<section class="section-alt">
+<section class="section-alt" id="colors">
   <div class="wrap">
     <span class="eyebrow reveal">Colors</span>
     <h2 class="section-title reveal">컬러 선택</h2>
     <div class="color-stage reveal">
-      <div class="color-image"><img class="zoomable-image" id="colorImg" data-img="colorPolarWhite" alt="폴라 화이트" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+      <div class="color-image"><img class="zoomable-image" id="colorImg" data-img="colorPolarWhite" alt="폴라 화이트" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 1368px) calc(100vw - 48px), 1320px"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
       <div class="color-swatches">
         <div class="swatch active" style="background:#F4F4F2;box-shadow:0 0 0 1.5px var(--line), inset 0 0 0 1px #ddd" data-name="폴라 화이트" data-code="149U" data-key="colorPolarWhite"></div>
         <div class="swatch" style="background:#1A1A1A" data-name="옵시디언 블랙" data-code="197U" data-key="colorObsidianBlack"></div>
@@ -873,7 +1105,7 @@ const IMAGE_CACHE_VERSION = "20261013";
 </section>
 
 <!-- MBUX Display Experience -->
-<section>
+<section id="mbux">
   <div class="wrap">
     <span class="eyebrow reveal">Display Concept</span>
     <h2 class="section-title reveal">MBUX Display Experience</h2>
@@ -893,11 +1125,11 @@ const IMAGE_CACHE_VERSION = "20261013";
     <h2 class="section-title reveal">인테리어</h2>
     <p class="section-desc reveal">부메스터 4D 서라운드 사운드, 일루미네이티드 파노라믹 루프, 앰비언트 라이팅까지 — 전기차 시대의 프리미엄 공간입니다.</p>
     <div class="interior-grid">
-      <div class="interior-card reveal delay-1"><img class="zoomable-image" data-img="burmester" alt="부메스터 4D 서라운드 사운드" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag tag-long">부메스터 4D 서라운드 사운드</span></div>
-      <div class="interior-card reveal delay-2"><img class="zoomable-image" data-img="panorama" alt="일루미네이티드 파노라믹 루프" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag tag-long">일루미네이티드 파노라믹 루프</span></div>
-      <div class="interior-card reveal delay-3"><img class="zoomable-image" data-img="ambient" alt="앰비언트" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">앰비언트 라이팅</span></div>
-      <div class="interior-card reveal delay-4"><img class="zoomable-image" data-img="seats" alt="시트" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">스포츠 시트</span></div>
-      <div class="interior-card reveal delay-5"><img class="zoomable-image" data-img="storage" alt="수납" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">수납 공간</span></div>
+      <div class="interior-card reveal delay-1"><img class="zoomable-image" data-img="burmester" alt="부메스터 4D 서라운드 사운드" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 860px) 50vw, 440px"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag tag-long">부메스터 4D 서라운드 사운드</span></div>
+      <div class="interior-card reveal delay-2"><img class="zoomable-image" data-img="panorama" alt="일루미네이티드 파노라믹 루프" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 860px) 50vw, 440px"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag tag-long">일루미네이티드 파노라믹 루프</span></div>
+      <div class="interior-card reveal delay-3"><img class="zoomable-image" data-img="ambient" alt="앰비언트" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 860px) 50vw, 440px"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">앰비언트 라이팅</span></div>
+      <div class="interior-card reveal delay-4"><img class="zoomable-image" data-img="seats" alt="시트" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 860px) 50vw, 440px"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">스포츠 시트</span></div>
+      <div class="interior-card reveal delay-5"><img class="zoomable-image" data-img="storage" alt="수납" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 560px) calc(100vw - 48px), (max-width: 860px) 50vw, 440px"><span class="image-hint">이미지 링크를 입력해주세요</span><span class="tag">수납 공간</span></div>
     </div>
   </div>
 </section>
@@ -985,7 +1217,7 @@ const IMAGE_CACHE_VERSION = "20261013";
 </section>
 
 <!-- 국내 출시 제원표 -->
-<section class="section-alt">
+<section class="section-alt" id="specs">
   <div class="wrap">
     <span class="eyebrow reveal">Technical Specification</span>
     <h2 class="section-title reveal">국내 출시 제원표</h2>
@@ -1067,41 +1299,11 @@ const IMAGE_CACHE_VERSION = "20261013";
 // ============================================================
 
 // ---- URL helpers ----
+// normalizeImageUrl / withCacheVersion / resolveImageSrc / getImageSources /
+// primeImage now live in <head> (right after IMAGE_LINKS) so the hero image can
+// be requested before this script runs.
 const IMAGE_RETRY_LIMIT = 1;               // 실패 시 자동 재시도 횟수
 const IMAGE_LOG_PREFIX = '[GLC 이미지]';
-const IMAGE_VERSION = (typeof IMAGE_CACHE_VERSION !== 'undefined' && IMAGE_CACHE_VERSION) ? String(IMAGE_CACHE_VERSION) : '';
-
-function safeDecode(seg){ try { return decodeURIComponent(seg); } catch(e){ return seg; } }
-
-// converts github.com/<user>/<repo>/blob|raw/<branch>/<path>(?raw=true) to a direct
-// raw.githubusercontent.com address; other URLs are returned unchanged
-function normalizeImageUrl(url){
-  let u = (url || '').trim();
-  if(!u) return '';
-  const m = u.match(/^https?:\/\/(?:www\.)?github\.com\/([^\/]+)\/([^\/]+)\/(?:blob|raw)\/([^?#]+)/i);
-  if(m){
-    const path = m[3].split('/').map(seg => encodeURIComponent(safeDecode(seg))).join('/');
-    u = `https://raw.githubusercontent.com/${m[1]}/${m[2]}/${path}`;
-  }
-  return u;
-}
-
-// appends ?v=IMAGE_CACHE_VERSION (and an optional retry token) without touching an existing v=
-function withCacheVersion(url, retryToken){
-  if(!url || /^(data|blob):/i.test(url)) return url;
-  try{
-    const o = new URL(url, location.href);
-    if(IMAGE_VERSION && !o.searchParams.has('v')) o.searchParams.set('v', IMAGE_VERSION);
-    if(retryToken) o.searchParams.set('r', retryToken);
-    return o.toString();
-  }catch(e){
-    return url;
-  }
-}
-
-function resolveImageSrc(url, retryToken){
-  return withCacheVersion(normalizeImageUrl(url), retryToken);
-}
 
 // logs the exact key, URL and (when the server allows it) the HTTP-level reason
 function diagnoseImageFailure(key, originalUrl, requestedUrl){
@@ -1129,24 +1331,36 @@ function diagnoseImageFailure(key, originalUrl, requestedUrl){
 
 // shared error handler for every static and dynamically created image
 function handleImageError(img){
-  const failedSrc = img.getAttribute('src');
-  if(!failedSrc) return; // already handled, or no URL was set
+  const srcAttr = img.getAttribute('src');
+  if(!srcAttr) return; // already handled, or no URL was set
   const key = img.dataset.img || '(키 없음)';
-  const original = img.dataset.originalUrl || failedSrc;
-  const tries = parseInt(img.dataset.retry || '0', 10);
+  const original = img.dataset.originalUrl || srcAttr;
+  const failedSrc = img.currentSrc || srcAttr;
 
-  // one automatic retry with a fresh cache token before giving up
+  // 1) a lightweight opt/ file is missing → switch to the IMAGE_LINKS original once
+  if(img.dataset.opt === '1'){
+    img.dataset.opt = '0';
+    img.removeAttribute('srcset');
+    console.warn(`${IMAGE_LOG_PREFIX} 경량 이미지 없음 → 원본 사용: IMAGE_LINKS["${key}"]`, failedSrc);
+    img.src = resolveImageSrc(original, null, img.dataset.img);
+    return;
+  }
+
+  // 2) one automatic retry with a fresh cache token before giving up
+  const tries = parseInt(img.dataset.retry || '0', 10);
   if(tries < IMAGE_RETRY_LIMIT){
     img.dataset.retry = String(tries + 1);
     console.warn(`${IMAGE_LOG_PREFIX} 로딩 실패 → 재시도 ${tries + 1}/${IMAGE_RETRY_LIMIT}: IMAGE_LINKS["${key}"]`, failedSrc);
     setTimeout(()=>{
       // skip if the image was switched to another URL in the meantime (e.g. color change)
-      if(img.getAttribute('src') === failedSrc) img.src = resolveImageSrc(original, Date.now().toString(36));
-    }, 600);
+      if(img.getAttribute('src') === srcAttr) img.src = resolveImageSrc(original, Date.now().toString(36), img.dataset.img);
+    }, 800);
     return;
   }
 
+  // 3) give up: keep the frame, show the hint, log one diagnostic HEAD request
   img.removeAttribute('src');
+  img.removeAttribute('srcset');
   img.classList.add('image-empty');
   showImageHint(img, true);
   diagnoseImageFailure(key, original, failedSrc);
@@ -1159,39 +1373,75 @@ function showImageHint(img, show){
   if(hint) hint.style.display = show ? 'flex' : 'none';
 }
 
-// sets an image's src from a URL, or shows the "링크를 입력해주세요" hint if empty
+// sets an image's src/srcset from IMAGE_LINKS (lightweight opt/ version when available),
+// or shows the "링크를 입력해주세요" hint if empty
 function setImageOrHint(img, url){
   const clean = (url || '').trim();
-  img.dataset.retry = '0';
+  const key = img.dataset.img;
   if(clean){
-    const finalSrc = resolveImageSrc(clean);
-    img.dataset.originalUrl = clean;
+    const sources = (key && (IMAGE_LINKS[key] || '').trim() === clean)
+      ? getImageSources(key)
+      : { original: clean, src: resolveImageSrc(clean), srcset: '', optimized: false };
+    const unchanged = img.getAttribute('src') === sources.src &&
+                      (img.getAttribute('srcset') || '') === sources.srcset;
     // don't restart a download that is already in progress / done for the same URL
-    if(img.getAttribute('src') !== finalSrc) img.src = finalSrc;
+    if(!unchanged){
+      img.dataset.retry = '0';
+      primeImage(img, sources);
+    }
     img.classList.remove('image-empty');
     showImageHint(img, false);
   } else {
-    if(img.dataset.img) console.warn(`${IMAGE_LOG_PREFIX} IMAGE_LINKS["${img.dataset.img}"] 값이 비어 있거나 존재하지 않는 키입니다.`);
+    if(key) console.warn(`${IMAGE_LOG_PREFIX} IMAGE_LINKS["${key}"] 값이 비어 있거나 존재하지 않는 키입니다.`);
     img.removeAttribute('src');
+    img.removeAttribute('srcset');
     delete img.dataset.originalUrl;
     img.classList.add('image-empty');
     showImageHint(img, true);
   }
 }
 
-// console helper: checkAllImageLinks() → table of every key with HTTP status / type
+// warms the browser cache for an IMAGE_LINKS key (same src/srcset/sizes as the page
+// image, so the later swap is a cache hit). Resolves when decoded, or after timeoutMs.
+const imageWarmCache = new Map();
+function warmImage(key, sizes, timeoutMs){
+  const s = getImageSources(key);
+  if(!s) return Promise.resolve(false);
+  const id = key + '|' + (sizes || '');
+  let p = imageWarmCache.get(id);
+  if(!p){
+    const im = new Image();
+    im.decoding = 'async';
+    if(s.srcset){ im.sizes = sizes || '100vw'; im.srcset = s.srcset; }
+    im.src = s.src;
+    p = (im.decode ? im.decode() : new Promise((res, rej)=>{ im.onload = res; im.onerror = rej; }))
+      .then(()=>true, ()=>{ imageWarmCache.delete(id); return false; });
+    imageWarmCache.set(id, p);
+  }
+  if(!timeoutMs) return p;
+  return Promise.race([p, new Promise(res=>setTimeout(()=>res(false), timeoutMs))]);
+}
+
+// console helper (manual only — never runs on page load):
+// checkAllImageLinks() → table of every key with HTTP status / type,
+// for both the IMAGE_LINKS original and the opt/ lightweight file
 function checkAllImageLinks(){
-  const keys = Object.keys(IMAGE_LINKS);
-  return Promise.all(keys.map(key=>{
-    const url = resolveImageSrc(IMAGE_LINKS[key]);
-    if(!url) return Promise.resolve({ key, url:'(비어 있음)', status:'-', type:'-', ok:false });
+  const head = (key, kind, url)=>{
+    if(!url) return Promise.resolve({ key, kind, url:'(비어 있음)', status:'-', type:'-', bytes:'-', ok:false });
     return fetch(url, { method:'HEAD', cache:'no-store' })
-      .then(r=>({ key, url, status:r.status, type:r.headers.get('content-type')||'', ok: r.ok && /^image\//i.test(r.headers.get('content-type')||'') }))
-      .catch(e=>({ key, url, status:'network error', type:String(e), ok:false }));
-  })).then(rows=>{
+      .then(r=>({ key, kind, url, status:r.status, type:r.headers.get('content-type')||'', bytes:r.headers.get('content-length')||'?', ok: r.ok && /^image\//i.test(r.headers.get('content-type')||'') }))
+      .catch(e=>({ key, kind, url, status:'network error', type:String(e), bytes:'-', ok:false }));
+  };
+  const jobs = [];
+  Object.keys(IMAGE_LINKS).forEach(key=>{
+    jobs.push(head(key, '원본', resolveImageSrc(IMAGE_LINKS[key], null, key)));
+    const s = getImageSources(key);
+    if(s && s.optimized) s.srcset.split(', ').forEach(c=>jobs.push(head(key, '경량 ' + c.split(' ')[1], c.split(' ')[0])));
+  });
+  return Promise.all(jobs).then(rows=>{
     console.table(rows);
     const bad = rows.filter(r=>!r.ok);
-    if(bad.length) console.error(`${IMAGE_LOG_PREFIX} 문제 있는 이미지 ${bad.length}개:`, bad.map(r=>r.key));
+    if(bad.length) console.error(`${IMAGE_LOG_PREFIX} 문제 있는 이미지 ${bad.length}개:`, bad.map(r=>`${r.key} (${r.kind})`));
     else console.info(`${IMAGE_LOG_PREFIX} 모든 이미지(${rows.length}개) 정상`);
     return rows;
   });
@@ -1296,6 +1546,17 @@ function openLightboxFromImage(img){
   lightboxLastFocused = img;
   lightboxImageEl.src = src;
   lightboxImageEl.alt = img.alt || '';
+  // page shows the lightweight opt/ image → fetch the IMAGE_LINKS original only now
+  if(img.dataset.opt === '1' && img.dataset.originalUrl){
+    const hd = resolveImageSrc(img.dataset.originalUrl, null, img.dataset.img);
+    const token = (lightboxEl._hdToken = (lightboxEl._hdToken || 0) + 1);
+    const hdImg = new Image();
+    hdImg.decoding = 'async';
+    hdImg.onload = ()=>{
+      if(lightboxEl._hdToken === token && lightboxEl.classList.contains('active')) lightboxImageEl.src = hd;
+    };
+    hdImg.src = hd;
+  }
   lockBodyScroll();
   lightboxEl.classList.add('active');
   lightboxEl.setAttribute('aria-hidden','false');
@@ -1303,6 +1564,7 @@ function openLightboxFromImage(img){
 }
 function closeLightbox(){
   if(!lightboxEl.classList.contains('active')) return;
+  lightboxEl._hdToken = (lightboxEl._hdToken || 0) + 1;
   lightboxEl.classList.remove('active');
   lightboxEl.setAttribute('aria-hidden','true');
   unlockBodyScroll();
@@ -1346,9 +1608,15 @@ function renderTabbed(navId, stageId, dataMap, renderFn, defaultKey){
     requestAnimationFrame(()=>{ requestAnimationFrame(()=>{ panel.classList.remove('switching'); }); });
   }
   paint(defaultKey);
+  const imgSizes = (stage.querySelector('img[sizes]') || {}).sizes || '100vw';
+  const warmTab = (btn)=>{ const d = dataMap[btn.dataset.key]; if(d && d.imageKey) warmImage(d.imageKey, imgSizes); };
   nav.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('pointerenter', ()=>warmTab(btn), { passive:true });
+    btn.addEventListener('touchstart', ()=>warmTab(btn), { passive:true });
+    btn.addEventListener('focus', ()=>warmTab(btn));
     btn.addEventListener('click',()=>{
       if(btn.classList.contains('active')) return;
+      warmTab(btn);
       nav.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
       btn.classList.add('active');
       const stagePanel = stage.firstElementChild;
@@ -1377,7 +1645,7 @@ const AMG_DATA = {
 };
 function amgTemplate(d){
   return `<div class="split-panel">
-    <div class="split-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+    <div class="split-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 820px) calc(100vw - 48px), 640px"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
     <div class="split-info">
       <span class="badge">${d.badge}</span>
       <h3>${d.name}</h3>
@@ -1407,7 +1675,7 @@ const MBUX_DATA = {
 function mbuxTemplate(d){
   const li = d.features.map(f=>`<li>${f}</li>`).join('');
   return `<div class="split-panel">
-    <div class="split-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+    <div class="split-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 820px) calc(100vw - 48px), 640px"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
     <div class="split-info">
       <span class="badge">${d.badge}</span>
       <h3>${d.name}</h3>
@@ -1436,7 +1704,7 @@ function renderTrim(key){
   panel.style.opacity = 0; panel.style.transform='translateY(8px)';
   setTimeout(()=>{
     panel.innerHTML = `
-      <div class="trim-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
+      <div class="trim-image"><img class="zoomable-image" data-img="${d.imageKey}" alt="${d.name}" onerror="handleImageError(this)" loading="lazy" decoding="async" sizes="(max-width: 760px) calc(100vw - 100px), 560px"><span class="image-hint">이미지 링크를 입력해주세요</span></div>
       <div class="trim-info">
         <span class="trim-badge">${d.badge}</span>
         <div class="trim-name">${d.name}</div>
@@ -1448,8 +1716,14 @@ function renderTrim(key){
     requestAnimationFrame(()=>{ panel.style.opacity=1; panel.style.transform='translateY(0)'; });
   },180);
 }
+const TRIM_IMG_SIZES = '(max-width: 760px) calc(100vw - 100px), 560px';
 document.querySelectorAll('.trim-tabs .tab-btn').forEach(btn=>{
+  const warmTrim = ()=>{ const d = TRIM_DATA[btn.dataset.trim]; if(d) warmImage(d.imageKey, TRIM_IMG_SIZES); };
+  btn.addEventListener('pointerenter', warmTrim, { passive:true });
+  btn.addEventListener('touchstart', warmTrim, { passive:true });
+  btn.addEventListener('focus', warmTrim);
   btn.addEventListener('click',()=>{
+    warmTrim();
     document.querySelectorAll('.trim-tabs .tab-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     renderTrim(btn.dataset.trim);
@@ -1935,28 +2209,106 @@ slider.addEventListener('input',updateCalc);
 updateCalc();
 
 // ---- color picker ----
+// The current image stays visible while the newly selected color downloads/decodes;
+// then image + code + name swap together with a short crossfade. Rapid clicks are
+// safe: only the most recent selection is applied (colorSwitchToken).
+let colorSwitchToken = 0;
+const colorImgEl = document.getElementById('colorImg');
+const colorImgSizes = colorImgEl.getAttribute('sizes') || '100vw';
 document.querySelectorAll('.swatch').forEach(sw=>{
+  // limited prefetch: only the color the visitor is pointing at / touching
+  const warm = ()=>warmImage(sw.dataset.key, colorImgSizes);
+  sw.addEventListener('pointerenter', warm, { passive:true });
+  sw.addEventListener('touchstart', warm, { passive:true });
   sw.addEventListener('click',()=>{
     if(sw.classList.contains('active')) return;
     document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
     sw.classList.add('active');
-    const colorImg = document.getElementById('colorImg');
+    const token = ++colorSwitchToken;
+    const colorImg = colorImgEl;
     const colorCodeEl = document.getElementById('colorCode');
     const colorNameEl = document.getElementById('colorName');
     const colorLabelEl = document.querySelector('.color-label');
-    colorImg.style.opacity = 0;
-    colorLabelEl.style.opacity = 0;
-    setTimeout(()=>{
-      colorImg.dataset.img = sw.dataset.key;
-      setImageOrHint(colorImg, IMAGE_LINKS[sw.dataset.key]);
-      colorImg.alt = sw.dataset.name;
-      colorCodeEl.textContent = sw.dataset.code;
-      colorNameEl.textContent = sw.dataset.name;
-      colorImg.style.opacity = 1;
-      colorLabelEl.style.opacity = 1;
-    },140);
+    colorImg.parentElement.setAttribute('aria-busy','true');
+    // wait for the new image (max 4s; on slow networks we swap anyway and let
+    // the normal loading / error handling take over)
+    warmImage(sw.dataset.key, colorImgSizes, 4000).then(()=>{
+      if(token !== colorSwitchToken) return;
+      colorImg.style.opacity = 0;
+      colorLabelEl.style.opacity = 0;
+      setTimeout(()=>{
+        if(token !== colorSwitchToken) return;
+        colorImg.dataset.img = sw.dataset.key;
+        setImageOrHint(colorImg, IMAGE_LINKS[sw.dataset.key]);
+        colorImg.alt = sw.dataset.name;
+        colorCodeEl.textContent = sw.dataset.code;
+        colorNameEl.textContent = sw.dataset.name;
+        colorImg.parentElement.removeAttribute('aria-busy');
+        colorImg.style.opacity = 1;
+        colorLabelEl.style.opacity = 1;
+      },140);
+    });
   });
 });
+
+// ============================================================
+// ---- fixed top navigation: scroll state, scroll-spy, mobile auto-scroll ----
+// Menu links are plain #anchors, so smooth scrolling, the back button and
+// keyboard navigation are handled natively by the browser
+// (html{scroll-behavior:smooth; scroll-padding-top} keeps titles below the nav).
+// ============================================================
+(function initSiteNav(){
+  const nav = document.getElementById('siteNav');
+  const menu = document.getElementById('siteNavMenu');
+  if(!nav || !menu) return;
+  const links = Array.from(menu.querySelectorAll('a[data-nav]'));
+  const targets = links.map(a=>document.getElementById(a.dataset.nav)).filter(Boolean);
+  let activeId = null;
+  let lockUntil = 0;
+  let ticking = false;
+
+  function centerInMenu(link, smooth){
+    if(menu.scrollWidth <= menu.clientWidth + 1) return; // everything fits (PC)
+    const mr = menu.getBoundingClientRect(), lr = link.getBoundingClientRect();
+    const left = menu.scrollLeft + (lr.left - mr.left) - (menu.clientWidth - lr.width) / 2;
+    menu.scrollTo({ left: Math.max(0, left), behavior: smooth ? 'smooth' : 'auto' });
+  }
+  function setActive(id, smooth){
+    if(id === activeId) return;
+    activeId = id;
+    links.forEach(a=>{
+      const on = a.dataset.nav === id;
+      a.classList.toggle('is-active', on);
+      if(on){ a.setAttribute('aria-current','location'); centerInMenu(a, smooth); }
+      else a.removeAttribute('aria-current');
+    });
+  }
+  function update(){
+    ticking = false;
+    nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    if(Date.now() < lockUntil) return;
+    const line = nav.getBoundingClientRect().bottom + Math.min(160, window.innerHeight * 0.22);
+    let current = null;
+    for(const t of targets){ if(t.getBoundingClientRect().top <= line) current = t.id; else break; }
+    // bottom of page: keep the last menu item active
+    if((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 2) current = targets[targets.length - 1].id;
+    setActive(current, true);
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+
+  links.forEach(a=>{
+    a.addEventListener('click', ()=>{
+      // highlight the chosen item right away; the spy resumes after the smooth scroll
+      setActive(a.dataset.nav, true);
+      lockUntil = Date.now() + 1200;
+    });
+  });
+  window.addEventListener('scrollend', ()=>{ lockUntil = 0; onScroll(); });
+  window.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('resize', onScroll, { passive:true });
+  window.addEventListener('hashchange', ()=>{ lockUntil = 0; onScroll(); });
+  update();
+})();
 </script>
 </body>
 </html>
