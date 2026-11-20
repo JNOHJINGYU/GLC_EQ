@@ -1596,7 +1596,7 @@ footer{padding:50px 0;text-align:center;color:var(--ink-faint);font-size:13px;}
 .mbis-i-dring-slot { fill: #121417; }
 .mbis-i-arrow path { fill: none; stroke: var(--mbis-blue); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
 .mbis-i-sound { fill: none; stroke: var(--mbis-blue); stroke-width: 4; stroke-linecap: round; }
-.mbis .mbis-i-lbl { font-size: 27px; stroke-width: 6px; }
+.mbis .mbis-int-lbl { font-size: 27px; stroke-width: 6px; }
 .mbis-i-lbls .mbis-lbl-line { stroke-width: 1.4; }
 .mbis--compact .mbis-i-lbls { display: none; }
 .mbis-i-ready-bg { fill: rgba(255, 255, 255, .94); stroke: var(--mbis-blue); stroke-width: 3; }
@@ -5769,7 +5769,7 @@ function initGLCRearAxleSteering(stage, panel){
       var g = sv('g', null, lg);
       if (d[2] != null) sv('path', { d: 'M' + d[0] + ',' + d[1] + ' L' + d[2] + ',' + d[3], 'class': 'mbis-lbl-line' }, g);
       if (d[2] != null) sv('circle', { cx: d[2], cy: d[3], r: 5, 'class': 'mbis-lbl-dot' }, g);
-      sv('text', { x: d[0], y: d[1] - 10, 'text-anchor': 'middle', 'class': 'mbis-lbl-text mbis-i-lbl', text: text }, g);
+      sv('text', { x: d[0], y: d[1] - 10, 'text-anchor': 'middle', 'class': 'mbis-lbl-text mbis-int-lbl', text: text }, g);
       return g;
     }
     var pre = this.feat.preSafe === 'supported';
